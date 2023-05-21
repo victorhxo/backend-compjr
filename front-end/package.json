@@ -16,7 +16,9 @@
     "mutationobserver-shim": "^0.3.7",
     "popper.js": "^1.16.1",
     "portal-vue": "^2.1.7",
+    "v-mask": "^2.3.0",
     "vue": "^2.6.14",
+    "vue-mask-directive": "^1.0.4",
     "vue-router": "^3.5.1"
   },
   "devDependencies": {

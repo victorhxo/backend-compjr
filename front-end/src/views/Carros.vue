@@ -38,6 +38,9 @@
             required="true"
             placeholder="Placa"
             v-model="dados.placa"
+            pattern="[A-Z]{3}-\d{4}"
+            v-mask="'AAA-####'"
+            v-on:input="dados.placa = dados.placa.toUpperCase()"
           />
           <select
             placeholder="Combustivel"
@@ -61,6 +64,8 @@
             required="true"
             placeholder="Ano"
             v-model="dados.ano"
+            min="1985"
+            max="2025"
           />
           <input
             type="number"
@@ -96,7 +101,8 @@ export default {
     };
   },
   methods: {
-    adicionar() {
+    adicionar(event) {
+      event.preventDefault();
       if (
         !this.dados.nomeVeiculo ||
         !this.dados.placa ||
@@ -116,12 +122,12 @@ export default {
           valor: this.dados.valor,
         };
         postCarros(dados)
-          .then(router.push("/listagem"))
+          .then(() => {
+            router.push("/listagem");
+          })
           .catch((error) => {
-            console.error(error);
             if (error.response.status === 400) {
               alert("Placa já cadastrada");
-              router.push("/carros");
             } else {
               alert("Erro ao cadastrar carro");
             }

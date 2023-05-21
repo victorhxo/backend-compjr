@@ -14,57 +14,55 @@
       src="../assets/img/locaminas.png"
       style="margin-top: 10px; margin-bottom: 30px"
     />
-    <form autocomplete="off">
-      <input
-        class="form-control"
-        type="text"
-        style="
-          width: 309px;
-          height: 54px;
-          border-style: none;
-          border-radius: 50px;
-          font-size: 22px;
-          padding: 6px 20px;
-          margin: 10px;
-        "
-        placeholder="Email"
-        v-model="dados.email"
-      />
-      <input
-        class="form-control"
-        type="password"
-        style="
-          width: 309px;
-          height: 54px;
-          margin: 10px;
-          padding: 6px 20px;
-          border-style: none;
-          border-radius: 50px;
-          font-size: 22px;
-          text-align: left;
-        "
-        placeholder="Senha"
-        v-model="dados.senha"
-      />
-      <button
-        class="btn btn-primary text-center"
-        style="
-          width: 309px;
-          height: 54px;
-          border-radius: 50px;
-          background: rgba(255, 255, 255, 0);
-          color: rgb(255, 255, 255);
-          font-size: 22px;
-          text-align: left;
-          padding: 6px 20px;
-          border: 4px solid rgb(255, 255, 255);
-          margin: 10px;
-        "
-        @click="logar"
-      >
-        ENTRAR
-      </button>
-    </form>
+    <input
+      class="form-control"
+      type="text"
+      style="
+        width: 309px;
+        height: 54px;
+        border-style: none;
+        border-radius: 50px;
+        font-size: 22px;
+        padding: 6px 20px;
+        margin: 10px;
+      "
+      placeholder="Email"
+      v-model="dados.email"
+    />
+    <input
+      class="form-control"
+      type="password"
+      style="
+        width: 309px;
+        height: 54px;
+        margin: 10px;
+        padding: 6px 20px;
+        border-style: none;
+        border-radius: 50px;
+        font-size: 22px;
+        text-align: left;
+      "
+      placeholder="Senha"
+      v-model="dados.senha"
+    />
+    <button
+      class="btn btn-primary text-center"
+      style="
+        width: 309px;
+        height: 54px;
+        border-radius: 50px;
+        background: rgba(255, 255, 255, 0);
+        color: rgb(255, 255, 255);
+        font-size: 22px;
+        text-align: left;
+        padding: 6px 20px;
+        border: 4px solid rgb(255, 255, 255);
+        margin: 10px;
+      "
+      @click="logar"
+    >
+      ENTRAR
+    </button>
     <div>
       <a
         style="color: rgb(206, 226, 255); font-size: 18px; margin: 10px"
@@ -145,12 +143,12 @@ export default {
       this.$bvModal.show("modal-recuperar-senha");
     },
     logar() {
-      login()
-        .then((res) => {
-          alert(res);
+      login(this.dados)
+        .then(() => {
+          router.push("/listagem");
         })
-        .catch((error) => {
-          alert(error);
+        .catch(() => {
+          alert("Usuário ou senha incorreto!");
         });
     },
     cadastrar() {

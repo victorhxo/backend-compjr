@@ -39,6 +39,7 @@
           border: 1px solid #dddddd;
         "
         placeholder="Search for names"
+        v-model="search"
       />
       <div
         class="table-responsive text-center border rounded-0"
@@ -57,7 +58,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in items">
+            <tr v-for="item in itemsFiltered">
               <td style="vertical-align: middle; width: 20%">
                 {{ item.nomeVeiculo }}
               </td>
@@ -155,6 +156,7 @@ export default {
   data() {
     return {
       showModal: false,
+      search: "",
       items: [],
       dados: {
         id: "",
@@ -176,6 +178,7 @@ export default {
       this.dados = item;
       this.$bvModal.show("modal-exluir");
     },
+    executarBusca() {},
     editar() {
       const dados = {
         nomeVeiculo: this.dados.nomeVeiculo,
@@ -208,6 +211,18 @@ export default {
           console.error(error);
           location.reload();
         });
+    },
+  },
+  computed: {
+    itemsFiltered() {
+      if (!this.search) {
+        return this.items;
+      }
+
+      const termoBusca = this.search.toLowerCase();
+      return this.items.filter((item) => {
+        return item.nomeVeiculo.toLowerCase().includes(termoBusca);
+      });
     },
   },
   mounted() {

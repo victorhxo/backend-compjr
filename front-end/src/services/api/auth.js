@@ -1,16 +1,7 @@
 import Api from "./Api";
 
-const login = () => {
-  return new Promise((resolve, reject) => {
-    Api()
-      .post("/auth/login", { email: "victor", senha: "123" })
-      .then((res) => {
-        resolve(true);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
+const login = (dados) => {
+  return Api().post("/auth/login", dados);
 };
 
 const register = (dados) => {
