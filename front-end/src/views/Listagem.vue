@@ -1,25 +1,22 @@
 <template>
   <body
     style="
-      height: 100vh;
-      width: 100vw;
+      height: 100%;
+      width: 100%;
       margin: 0;
       padding: 0;
       background: rgba(255, 255, 255, 0);
     "
   >
-    <header
-      class="d-flex justify-content-between align-items-center"
-      style="height: 10vh"
-    >
+    <header class="d-flex justify-content-between" style="height: 10vh">
       <div class="mx-auto">
         <img
           src="../assets/img/logo.png"
-          style="width: 60px; margin-top: 20%; margin-bottom: 20%"
+          style="width: 60px; margin-top: 20px; margin-bottom: 20px"
         />
         <img
           src="../assets/img/locaminas.png"
-          style="margin-top: 20%; margin-left: 20%; margin-bottom: 20%"
+          style="margin-top: 20px; margin-left: 20px; margin-bottom: 20px"
         />
       </div>
     </header>

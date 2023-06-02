@@ -9,10 +9,9 @@ const usuarioSchema = new mongoose.Schema({
   tokenResetarSenhaExpirado: { type: Date, select: false },
   dataCriacao: { type: Date, default: Date.now },
   imagem: { type: String, required: true },
-  permissao: {
-    type: String,
-    enum: ['usuario', 'administrador'],
-    default: 'usuario',
+  administrador: {
+    type: Boolean,
+    default: false,
   },
 });
 

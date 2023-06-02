@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
             if (result) {
               const token = generateToken({
                 uid: user.id,
-                permissao: user.permissao,
+                administrador: user.administrador,
               });
               return res.send({ token: token, tokenExpiration: '1d' });
             } else {

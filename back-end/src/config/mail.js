@@ -2,7 +2,7 @@ export default {
   host: 'sandbox.smtp.mailtrap.io',
   port: 2525,
   auth: {
-    user: 'eccd6d678a5cd9',
-    pass: '6150092cc60d20',
+    user: 'c6d203e610b194',
+    pass: '35f07b7bedc7e1',
   },
 };
