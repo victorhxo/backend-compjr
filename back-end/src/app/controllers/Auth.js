@@ -10,7 +10,7 @@ import Multer from '../middlewares/Multer';
 const router = new Router();
 
 const generateToken = (params) => {
-  return jwt.sign(params, authConfig.secret, { expiresIn: 86400 });
+  return jwt.sign(params, authConfig.secret, { expiresIn: 2592000 });
 };
 
 router.post('/register', Multer.single('imagem'), (req, res) => {
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
                 uid: user.id,
                 administrador: user.administrador,
               });
-              return res.send({ token: token, tokenExpiration: '1d' });
+              return res.send({ token: token, tokenExpiration: '30d' });
             } else {
               return res.status(400).send({ error: 'Senha invalida' });
             }

@@ -4,7 +4,7 @@ import Carro from '../app/schemes/Carro';
 import Usuario from '../app/schemes/Usuario';
 
 const token =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDViYjg5ZjY2Y2U3ZjU2YTJjZjA1Y2UiLCJwZXJtaXNzYW8iOiJhZG1pbmlzdHJhZG9yIiwiaWF0IjoxNjg0NDI3NjQ1LCJleHAiOjE2ODQ1MTQwNDV9.CmnUzi_DOpi0163xytvlZBsPA3ce-bm-v_icIySJr3s';
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NDk4ODgxYWI5YjBjMjgzZTRmY2MwODAiLCJhZG1pbmlzdHJhZG9yIjp0cnVlLCJpYXQiOjE2ODc3MTg0NzIsImV4cCI6MTY5MDMxMDQ3Mn0.6nFUUBukso2s55iXGakpuC7vL1I50LAdpsbiDMqRpJ0';
 
 const tokenUsuario = 'Bearer ';
 
@@ -44,7 +44,7 @@ describe('/carros', () => {
     expect(res.statusCode).toEqual(400);
   });
 
-  it('Deve retornar status 401 quando tentar cadastrar um novo carro e o usuario não está autenticado e é administrador', async () => {
+  it('Deve retornar status 401 quando tentar cadastrar um novo carro e o usuario não está autenticado ou não é administrador', async () => {
     const existingCar = {
       nomeVeiculo: 'Carro Teste',
       placa: 'ABC89123',
