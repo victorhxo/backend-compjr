@@ -11,13 +11,12 @@ const app = express();
 const port = 3000;
 
 module.exports = app;
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '')));
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/carros', carros);
 app.use('/auth', Auth);
 
@@ -55,6 +54,7 @@ function createAdminUser() {
       console.error('Erro ao consultar usuário no banco de dados:', error);
     });
 }
+
 createAdminUser();
 
 console.log(`Servidor rodando no link http://localhost:${port}`);

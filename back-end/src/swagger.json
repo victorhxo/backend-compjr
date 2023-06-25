@@ -169,6 +169,164 @@
           }
         }
       }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login do usuario",
+        "description": "Efetua o login do usuario no sistema",
+        "tags": ["Usuario"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login realizado com sucesso"
+          },
+          "400": {
+            "description": "Senha invalida"
+          },
+          "404": {
+            "description": "Usuario não encontrado"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": ["Usuario"],
+        "summary": "Cadastrar usuário",
+        "description": "Função para cadastro de usuario",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                },
+                "imagem": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cadastrado com sucesso"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Usuario já existente"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/forgot-password": {
+      "post": {
+        "tags": ["Usuario"],
+        "summary": "Recuperar senha",
+        "description": "Função para recuperar a senha do usuário",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/reset-password": {
+      "post": {
+        "tags": ["Usuario"],
+        "summary": "Resetar a senha",
+        "description": "Função para resetar a senha do usuário",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "token": {
+                  "example": "any"
+                },
+                "novaSenha": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -193,6 +351,35 @@
           },
           "valor": {
             "type": "number"
+          }
+        }
+      },
+      "Usuario": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+          },
+          "tokenResetarSenha": {
+            "type": "string"
+          },
+          "tokenResetarSenhaExpirado": {
+            "type": "date"
+          },
+          "dataCriacao": {
+            "type": "date"
+          },
+          "imagem": {
+            "type": "string"
+          },
+          "administrador": {
+            "type": "boolean"
           }
         }
       }

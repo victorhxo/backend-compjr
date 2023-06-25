@@ -19,7 +19,7 @@ router.post('/register', Multer.single('imagem'), (req, res) => {
   Usuario.findOne({ email })
     .then((userData) => {
       if (userData) {
-        return res.status(400).send({ error: 'Usuario já existe' });
+        return res.status(404).send({ error: 'Usuario já existe' });
       } else {
         if (req.file) {
           console.log('Arquivo recebido', req.file);

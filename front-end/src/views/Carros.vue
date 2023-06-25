@@ -111,6 +111,7 @@ export default {
         !this.dados.ano ||
         !this.dados.valor
       ) {
+        alert("Todos campos são obrigatorios!");
         return;
       } else {
         const dados = {

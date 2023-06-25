@@ -67,22 +67,29 @@
       <a
         style="color: rgb(206, 226, 255); font-size: 18px; margin: 10px"
         @click="modalCadastrar()"
+        @mouseenter="toggleClickable('cadastrar', true)"
+        @mouseleave="toggleClickable('cadastrar', false)"
+        :class="{ clickable: myData.cadastrarClickable }"
         >Cadastrar</a
       >
       <a
         style="color: rgb(206, 226, 255); font-size: 18px; margin: 10px"
         @click="modalRecuperarSenha()"
+        @mouseenter="toggleClickable('recuperarSenha', true)"
+        @mouseleave="toggleClickable('recuperarSenha', false)"
+        :class="{ clickable: myData.recuperarSenhaClickable }"
         >Esqueci minha senha</a
       >
     </div>
     <b-modal hide-footer hide-header-close id="modal-cadastrar">
-      <div cllass="d-flex justify-content-center" style="">
+      <div class="d-flex flex-column align-items-center">
         <b-form-input placeholder="Nome" v-model="modal.nome"></b-form-input>
         <b-form-input placeholder="Email" v-model="modal.email"></b-form-input>
         <b-form-input
           placeholder="Senha"
           autocomplete="off"
           v-model="modal.senha"
+          type="password"
         ></b-form-input>
         <input
           type="file"
@@ -91,8 +98,13 @@
           @change="handleImageUpload"
         />
       </div>
-      <div class="d-flex justify-content-center">
-        <b-button class="mr-2" variant="secondary">Cancelar</b-button>
+      <div class="d-flex justify-content-center mt-3">
+        <b-button
+          class="mr-2"
+          variant="secondary"
+          @click="$bvModal.hide('modal-cadastrar')"
+          >Cancelar</b-button
+        >
         <b-button variant="primary" @click="cadastrar">Confirmar</b-button>
       </div>
     </b-modal>
@@ -130,18 +142,33 @@ export default {
         senha: "",
         imagem: "",
       },
+      myData: {
+        cadastrarClickable: false,
+        recuperarSenhaClickable: false,
+      },
     };
   },
   methods: {
+    toggleClickable(type, value) {
+      if (type === "cadastrar") {
+        this.myData.cadastrarClickable = value;
+      } else if (type === "recuperarSenha") {
+        this.myData.recuperarSenhaClickable = value;
+      }
+    },
+
     handleImageUpload(event) {
       this.modal.imagem = event.target.files[0];
     },
+
     modalCadastrar() {
       this.$bvModal.show("modal-cadastrar");
     },
+
     modalRecuperarSenha() {
       this.$bvModal.show("modal-recuperar-senha");
     },
+
     logar() {
       login(this.dados)
         .then(() => {
@@ -151,7 +178,12 @@ export default {
           alert("Usuário ou senha incorreto!");
         });
     },
+
     cadastrar() {
+      if (!this.modal.nome || !this.modal.email || !this.modal.senha) {
+        alert("Todos campos são obrigatorios!");
+        return;
+      }
       register(this.modal)
         .then((res) => {
           alert("Usuario cadastrado");
@@ -167,6 +199,10 @@ export default {
 </script>
 
 <style>
+.clickable {
+  cursor: pointer;
+  text-decoration: underline;
+}
 html,
 body {
   width: 100vw;

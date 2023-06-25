@@ -109,7 +109,6 @@
             </tr>
           </tbody>
         </table>
-
         <b-modal hide-header-close id="modal-editar" @ok="editar">
           <b-form-input v-model="dados.nomeVeiculo"></b-form-input>
           <b-form-input v-model="dados.placa"></b-form-input>
@@ -143,6 +142,9 @@
           </div>
         </b-modal>
       </div>
+      <b-button variant="success" @click="$router.push('/carros')"
+        >Cadastrar</b-button
+      >
     </div>
   </body>
 </template>
