@@ -125,7 +125,7 @@ describe('/carros', () => {
 describe('/auth', () => {
   it('Deve retornar o token de autenticação ao fornecer credenciais corretas', async () => {
     const user = {
-      email: 'victor',
+      email: 'victor@ufla',
       senha: '123',
     };
 
@@ -138,7 +138,7 @@ describe('/auth', () => {
 
   it('Deve retornar erro de senha inválida ao fornecer senha incorreta', async () => {
     const user = {
-      email: 'victor',
+      email: 'victor@ufla',
       senha: 'senha_incorreta',
     };
 
