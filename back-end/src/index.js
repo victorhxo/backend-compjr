@@ -22,7 +22,7 @@ app.use('/auth', Auth);
 
 function createAdminUser() {
   const nome = 'Victor';
-  const email = 'victor';
+  const email = 'victor@ufla';
   const senha = '123';
   const imagem = '../uploads/images/img1.png';
   const administrador = true;

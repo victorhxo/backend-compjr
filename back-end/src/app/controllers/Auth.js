@@ -92,24 +92,24 @@ router.post('/forgot-password', (req, res) => {
           },
         })
           .then(() => {
-            Mailer.sendMail(
-              {
-                to: email,
-                from: 'teste@ufla',
-                template: 'auth/forgot_password',
-                context: { token },
-              },
-              (error) => {
-                if (error) {
-                  console.error('Erro ao enviar email', error);
-                  return res
-                    .status(400)
-                    .send({ error: 'Failed to sending recover password mail' });
-                } else {
-                  return res.send();
-                }
-              },
-            );
+            const mailOptions = {
+              to: email,
+              from: 'recover-password@ufla',
+              subject: 'Recuperação de senha',
+              template: 'auth/forgot_password',
+              context: { token },
+            };
+
+            Mailer.sendMail(mailOptions, (error) => {
+              if (error) {
+                console.error('Erro ao enviar email', error);
+                return res
+                  .status(400)
+                  .send({ error: 'Failed to sending recover password mail' });
+              } else {
+                return res.send();
+              }
+            });
           })
           .catch((error) => {
             console.error(
@@ -123,7 +123,7 @@ router.post('/forgot-password', (req, res) => {
       }
     })
     .catch((error) => {
-      console.error('Erro ao recuperar senha', err);
+      console.error('Erro ao recuperar senha', error);
       return res.status(500).send({ error: 'Internal server error' });
     });
 });
@@ -159,7 +159,7 @@ router.post('/reset-password', (req, res) => {
       }
     })
     .catch((error) => {
-      console.error('Erro ao recuperar senha', err);
+      console.error('Erro ao recuperar senha', error);
       return res.status(500).send({ error: 'Internal server error' });
     });
 });
