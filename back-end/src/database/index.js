@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 mongoose
-  .connect('mongodb://localhost/locaminas', {
+  .connect('mongodb://127.0.0.1/locaminas', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
