@@ -31,7 +31,7 @@ Projeto desenvolvido na capacitação de back-end para a empresa [Comp Junior](h
 ## Executar
 
 ### Dependências
-- [Node.js v16.20.1](https://nodejs.org/)
+- [Node.js](https://nodejs.org/) - v16.20.1
 - [MongoDB](https://www.mongodb.com/try/download/community)
 
 ```bash
